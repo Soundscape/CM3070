@@ -128,3 +128,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Lightning
+lightning_logs/
+
+# Games
+data/games_*.csv
