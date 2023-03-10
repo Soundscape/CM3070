@@ -1,0 +1,18 @@
+{
+  "lr": 1e-5,
+  "input_dim": 120,
+  "output_dim": 96,
+  "fc1_dim": 256,
+  "fc2_dim": 256,
+  "fc3_dim": 1024,
+  "fc4_dim": 1024,
+  "fc5_dim": 256,
+  "fc6_dim": 1024,
+  "dropout": 0.2,
+  "batch_size": 512,
+  "train_frac": 0.8,
+  "test_frac": 0.1,
+  "val_frac": 0.1,
+  "num_workers": 8,
+  "file_path": "/workspaces/final-project/data/games_10000.csv"
+}

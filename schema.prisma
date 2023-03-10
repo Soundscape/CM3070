@@ -1,0 +1,52 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:./schedule.db"
+}
+
+generator client {
+    provider             = "prisma-client-py"
+    interface            = "sync"
+    recursive_type_depth = 5
+}
+
+model Cinema {
+    id           Int      @id
+    name         String   @unique
+    opens        Int      @default(8)
+    closes       Int      @default(23)
+    interval     Int      @default(60)
+    cleaningTime Int      @default(20)
+    screens      Screen[]
+}
+
+model Screen {
+    id         Int         @id
+    name       String      @unique
+    capacity   Int
+    Cinema     Cinema?     @relation(fields: [cinemaId], references: [id])
+    cinemaId   Int?
+}
+
+model Genre {
+    id            Int             @id
+    name          String          @unique
+    films         Film[]
+    GenreGaussian GenreGaussian[]
+}
+
+model Film {
+    id         Int         @id
+    title      String      @unique
+    runtime    Int
+    rating     Float
+    genres     Genre[]
+}
+
+model GenreGaussian {
+    id      Int   @id
+    mu      Float
+    sigma   Float
+    weight  Float
+    genre   Genre @relation(fields: [genreId], references: [id])
+    genreId Int
+}
